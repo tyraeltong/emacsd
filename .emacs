@@ -1,4 +1,4 @@
-;; Time-stamp: <2012-09-01 23:58:04 Saturday by tyraeltong>
+;; Time-stamp: <2012-09-02 01:01:26 Sunday by tyraeltong>
 (server-start)
 (set-face-attribute 'default nil :height 180)
 (setq-default tab-width 2)
@@ -196,6 +196,14 @@
                       helm-c-source-files-in-current-dir
                       helm-c-source-locate
                       ))))
+
+;; tweak for ergoemacs keybinding & helm
+(add-hook 'helm-before-initialize-hook #'(lambda() (ergoemacs-mode 0)))
+(add-hook 'helm-cleanup-hook #'(lambda() (ergoemacs-mode 1)))
+
+;; looks like sml from elpa doesn't autoload
+(require 'smart-mode-line)
+(sml/setup)
 
 (require 'package)
 (add-to-list 'package-archives

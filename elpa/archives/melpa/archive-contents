@@ -1178,7 +1178,7 @@
 	       [(20120606 1317)
 		nil "Flex matching (like ido) in isearch. [source: hg]" single])
  (fixmee .
-	 [(20120831 1526)
+	 [(20120901 1155)
 	  nil "No description available. [source: github]" single])
  (findr .
 	[(20120124 849)
