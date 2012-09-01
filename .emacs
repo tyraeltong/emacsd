@@ -1,4 +1,4 @@
-;; Time-stamp: <2012-09-01 23:33:18 Saturday by tyraeltong>
+;; Time-stamp: <2012-09-01 23:58:04 Saturday by tyraeltong>
 (server-start)
 (set-face-attribute 'default nil :height 180)
 (setq-default tab-width 2)
@@ -196,7 +196,6 @@
                       helm-c-source-files-in-current-dir
                       helm-c-source-locate
                       ))))
-
 
 (require 'package)
 (add-to-list 'package-archives
