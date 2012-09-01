@@ -1,4 +1,4 @@
-;; Time-stamp: <2012-09-01 17:51:27 Saturday by tyraeltong>
+;; Time-stamp: <2012-09-01 23:20:13 Saturday by tyraeltong>
 
 ;; (add-to-list 'load-path "~/.emacs.d/cedet-1.0")
 ;; (load-file "~/.emacs.d/cedet-1.0/common/cedet.el")
@@ -48,6 +48,7 @@ of `ruby-program-name').  Runs the hooks `inferior-ruby-mode-hook'
             (lambda ()
               (setq ruby-indent-level 2)
               (ruby-electric-mode nil)
+              (autopair-mode 0)
               (ruby-keys)) t)
 
   (defun ruby-mark-defun ()
