@@ -1,4 +1,4 @@
-;; Time-stamp: <2012-09-01 18:52:13 Saturday by tyraeltong>
+;; Time-stamp: <2012-09-01 23:33:18 Saturday by tyraeltong>
 (server-start)
 (set-face-attribute 'default nil :height 180)
 (setq-default tab-width 2)
@@ -141,11 +141,6 @@
 (global-visible-mark-mode t)
 ;;(global-auto-mark-mode t)
 
-;; anything
-(add-to-list 'load-path "~/.emacs.d/anything-config")
-(require 'anything-config)
-(global-set-key [(ctrl a)] 'anything)
-
 ;;(setq linum-format "   %d  ")
 ;; rsense, this seems not work with RVM, yet.
 ;; (setq rsense-home "~/.emacs.d/rsense")
@@ -185,6 +180,23 @@
 (global-set-key "\C-cm" 'markdown-preview-file)
 
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; helm, formerly anything
+(global-set-key [(ctrl a)] 'helm-mini)
+
+(global-set-key (kbd "C-x b")
+                (lambda() (interactive)
+                  (helm
+                   :prompt "Switch to: "
+                   :candidate-number-limit 10
+                   :sources
+                   '( helm-c-source-buffers-list
+                      helm-c-source-recentf
+                      helm-c-source-bookmarks
+                      helm-c-source-files-in-current-dir
+                      helm-c-source-locate
+                      ))))
+
 
 (require 'package)
 (add-to-list 'package-archives
