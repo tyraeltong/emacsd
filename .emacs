@@ -1,4 +1,5 @@
-;; Time-stamp: <2012-09-02 01:01:26 Sunday by tyraeltong>
+;; Time-stamp: <2012-09-02 21:17:24 Sunday by tyraeltong>
+(message "-------start my .emacs")
 (server-start)
 (set-face-attribute 'default nil :height 180)
 (setq-default tab-width 2)
@@ -7,15 +8,18 @@
 (defconst my-emacs-my-lisps-path (concat my-emacs-path "my-lisps/") "my own lisp files")
 (defconst my-emacs-lisps-path (concat my-emacs-path "lisps/") "my downloaded lisp files")
 (defconst my-emacs-templates-path (concat my-emacs-path "templates/") "my templates")
-(defconst my-elpa-path (concat my-emacs-path "elpa"))
+;; (defconst my-elpa-path (concat my-emacs-path "elpa"))
 
 (load (concat my-emacs-my-lisps-path "my-subdirs"))
-(my-add-subdirs-to-load-path my-elpa-path)
+;; (my-add-subdirs-to-load-path my-elpa-path)
 (my-add-subdirs-to-load-path my-emacs-lisps-path)
 (my-add-subdirs-to-load-path my-emacs-my-lisps-path)
 
 (setq backup-inhibited t)
 (setq auto-save-default nil)
+
+(require 'package)
+(package-initialize)
 
 (require 'eval-after-load)
 (require 'util)
@@ -32,6 +36,11 @@
 (require 'browse-kill-ring-settings)
 (require 'autopair-settings)
 ;; (require 'rect-mark-settings)
+
+(require 'package)
+(message "start init packages")
+;; (package-initialize)
+;; (message "init packages end")
 
 ;; (require 'ascii)
 (require 'hexview-mode)
@@ -84,12 +93,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode t)
+ '(column-number-mode t)
  '(css-indent-level 2)
+ '(display-time-mode nil)
  '(inhibit-startup-screen t)
+ '(js-indent-level 2)
  '(js2-basic-offset 2)
  '(js2-cleanup-whitespace t)
- '(js-indent-level 2)
- '(js2-electric-keys (quote nil)))
+ '(js2-electric-keys (quote nil))
+ '(scroll-bar-mode nil)
+ '(show-paren-mode t)
+ '(sml/hidden-modes (quote (" hl-p" " ErgoEmacs" " Undo-Tree")))
+ '(sml/show-time t)
+ '(tool-bar-mode nil))
 
 (global-linum-mode t)
 (setenv "ERGOEMACS_KEYBOARD_LAYOUT" "us") ; US
@@ -103,24 +120,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(setenv "DYLD_LIBRARY_PATH" "/usr/local/mysql/lib/")
-(setenv "TERM" "xterm-256color")
-(defadvice ansi-term (after advise-ansi-term-coding-system)
-  (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-(ad-activate 'ansi-term)
-;;(setq highlight-tail-steps 7
-;;      highlight-tail-timer 0.5)
-(add-to-list 'load-path "~/.emacs.d/expand-region.el")
+
 (require 'expand-region)
 (global-set-key [(meta 2)] 'er/expand-region)
 
 (global-set-key [(meta t)] 'textmate-goto-file)
 (global-set-key [(meta T)] 'textmate-goto-symbol)
-
-;; using Aspell to replace ispell
-(setq ispell-program-name "aspell")
-(setq ispell-list-command "list")       ; Flyspell uses "-l" with ispell for faster region checking. The equivalent aspell command is "list"
-(setq ispell-extra-args '("--sug-mode=ultra"))
 
 ;; mark
 (when (require 'auto-mark nil t)
@@ -139,13 +144,6 @@
 (require 'visible-mark)
 (visible-mark-mode t)
 (global-visible-mark-mode t)
-;;(global-auto-mark-mode t)
-
-;;(setq linum-format "   %d  ")
-;; rsense, this seems not work with RVM, yet.
-;; (setq rsense-home "~/.emacs.d/rsense")
-;; (add-to-list 'load-path (concat rsense-home "/etc"))
-;; (require 'rsense)
 
 ;; add ack into execute path
 (setq exec-path (append exec-path '("/usr/local/bin/")))
@@ -179,23 +177,19 @@
 
 (global-set-key "\C-cm" 'markdown-preview-file)
 
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+;; code folding
+(require 'fold-dwim)
+(global-set-key (kbd "M-9") 'fold-dwim-toggle)
 
 ;; helm, formerly anything
-(global-set-key [(ctrl a)] 'helm-mini)
+(require 'helm-config)
+;;(helm-mode 1)
+(global-set-key (kbd "M-F") 'helm-for-files)
 
-(global-set-key (kbd "C-x b")
-                (lambda() (interactive)
-                  (helm
-                   :prompt "Switch to: "
-                   :candidate-number-limit 10
-                   :sources
-                   '( helm-c-source-buffers-list
-                      helm-c-source-recentf
-                      helm-c-source-bookmarks
-                      helm-c-source-files-in-current-dir
-                      helm-c-source-locate
-                      ))))
+(add-to-list 'hs-special-modes-alist
+	     '(ruby-mode
+	       "\\(def\\|do\\|{\\)" "\\(end\\|end\\|}\\)" "#"
+	       (lambda (arg) (ruby-end-of-block)) nil))
 
 ;; tweak for ergoemacs keybinding & helm
 (add-hook 'helm-before-initialize-hook #'(lambda() (ergoemacs-mode 0)))
@@ -205,10 +199,8 @@
 (require 'smart-mode-line)
 (sml/setup)
 
-(require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
-(package-initialize)

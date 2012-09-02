@@ -199,7 +199,7 @@
 		 (0)))
 	       "Major mode for editing .jade files [source: github]" single])
  (string-utils .
-	       [(20120830 1724)
+	       [(20120901 1720)
 		nil "String-manipulation utilities [source: github]" single])
  (stem .
        [(20120826 2340)
@@ -301,7 +301,7 @@
 	     [(20120807 1913)
 	      nil "Open a shell relative to the working directory [source: github]" single])
  (session .
-	  [(20120511 0)
+	  [(20120511)
 	   nil "use variables, registers and buffer places across sessions [source: github]" single])
  (sentence-highlight .
 		     [(20111215 1956)
@@ -680,7 +680,7 @@
 	 [(20120823 1747)
 	  nil "Org-blog exporter [source: github]" tar])
  (nrepl-ritz .
-	     [(20120831 2223)
+	     [(20120901 2023)
 	      ((nrepl
 		(0 1 3)))
 	      "nrepl extensions for ritz [source: github]" single])
@@ -816,7 +816,7 @@
 	    (1 3)))
 	  "logging library for Emacs [source: github]" single])
  (logalimacs .
-	     [(20120828 2129)
+	     [(20120902 311)
 	      ((popwin
 		(20120529))
 	       (popup
@@ -1036,7 +1036,7 @@
 	    (20120509)))
 	  "helm-sources and some utilities for GNU R. [source: github]" single])
  (helm .
-       [(20120901 1711)
+       [(20120901 1925)
 	nil "Helm is an Emacs incremental and narrowing framework [source: github]" tar])
  (header-button .
 		[(20120731 2303)
@@ -1446,13 +1446,13 @@
 			       [(20120811 1252)
 				nil "A brown/orange light-on-dark theme for Emacs 24 (deftheme). [source: github]" single])
  (bbdb .
-       [(20120811 1831)
+       [(20120901 1139)
 	nil "No description available. [source: git]" tar])
  (backup-walker .
 		[(20110920 350)
 		 nil "quickly traverse all backups of a file [source: github]" single])
  (back-button .
-	      [(20120831 1527)
+	      [(20120901 1722)
 	       ((nav-flash
 		 (1 0 0))
 		(smartrep
@@ -1526,10 +1526,4 @@
 	    "An auto-complete source for Clojure using nrepl completions [source: github]" single])
  (ac-dabbrev .
 	     [(20091116 1626)
-	      nil "auto-complete.el source for dabbrev [source: wiki]" single])
- (melpa .
-	[(20120202 1322)
-	 nil "special handling for the MELPA repository [source: github]" single])
- (slime .
-	[(20120818)
-	 nil "Superior Lisp Interaction Mode for Emacs [source: git]" tar]))
+	      nil "auto-complete.el source for dabbrev [source: wiki]" single]))

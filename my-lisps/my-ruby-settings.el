@@ -1,4 +1,4 @@
-;; Time-stamp: <2012-09-01 23:20:13 Saturday by tyraeltong>
+;; Time-stamp: <2012-09-02 13:16:54 Sunday by tyraeltong>
 
 ;; (add-to-list 'load-path "~/.emacs.d/cedet-1.0")
 ;; (load-file "~/.emacs.d/cedet-1.0/common/cedet.el")
@@ -72,6 +72,11 @@ of `ruby-program-name').  Runs the hooks `inferior-ruby-mode-hook'
               '(lambda ()
                  (outline-minor-mode)
                  (setq outline-regexp " *\\(def \\|class\\|module\\)")))
+
+(add-hook 'coffee-mode-hook
+          '(lambda()
+             (outline-minor-mode)
+             (setq outline-regexp " *\\(def \\|class\\|module\\|->\\|=>)")))
 
 ;; rinari
 (require 'rinari)
