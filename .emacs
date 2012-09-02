@@ -1,4 +1,4 @@
-;; Time-stamp: <2012-09-02 21:17:24 Sunday by tyraeltong>
+;; Time-stamp: <2012-09-02 22:40:15 Sunday by tyraeltong>
 (message "-------start my .emacs")
 (server-start)
 (set-face-attribute 'default nil :height 180)
@@ -199,6 +199,11 @@
 (require 'smart-mode-line)
 (sml/setup)
 
+; capitalize region
+(global-set-key (kbd "C-x C-c") 'capitalize-region)
+
+; ace jump mode
+(global-set-key (kbd "C-\\") 'ace-jump-mode)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives

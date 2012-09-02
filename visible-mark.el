@@ -35,7 +35,7 @@
     (((type tty) (class mono))
      (:inverse-video t))
     (((class color) (background dark))
-     (:background "pink"))
+     (:underline t))
     (((class color) (background light))
      (:background "grey80"))
     (t (:background "gray")))
