@@ -1,4 +1,4 @@
-;; Time-stamp: <2012-09-02 22:40:15 Sunday by tyraeltong>
+;; Time-stamp: <2012-09-02 23:07:12 Sunday by tyraeltong>
 (message "-------start my .emacs")
 (server-start)
 (set-face-attribute 'default nil :height 180)
@@ -104,7 +104,7 @@
  '(js2-electric-keys (quote nil))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
- '(sml/hidden-modes (quote (" hl-p" " ErgoEmacs" " Undo-Tree")))
+ '(sml/hidden-modes (quote (" hl-p" " ErgoEmacs" " Undo-Tree" " mate" " pair")))
  '(sml/show-time t)
  '(tool-bar-mode nil))
 
@@ -204,6 +204,15 @@
 
 ; ace jump mode
 (global-set-key (kbd "C-\\") 'ace-jump-mode)
+
+(require 'dired)
+
+;; Make dired less verbose
+(require 'dired-details)
+(setq-default dired-details-hidden-string "--- ")
+(dired-details-install)
+
+
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
