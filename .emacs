@@ -1,4 +1,4 @@
-;; Time-stamp: <2012-09-02 23:07:12 Sunday by tyraeltong>
+;; Time-stamp: <2012-09-13 08:51:38 Thursday by tyraeltong>
 (message "-------start my .emacs")
 (server-start)
 (set-face-attribute 'default nil :height 180)
@@ -212,6 +212,8 @@
 (setq-default dired-details-hidden-string "--- ")
 (dired-details-install)
 
+;; dirtree
+(require 'dirtree)
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
